@@ -35,7 +35,7 @@ setup(
     ],
     platforms="ANY",
     packages=["pdoc"],
-    package_data={"pdoc": ["templates/*"]},
+    package_data={"pdoc/render": ["templates/*"]},
     entry_points={"console_scripts": ["pdoc = pdoc.cli:main"]},
     provides=["pdoc"],
     extras_require={
