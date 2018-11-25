@@ -3,11 +3,12 @@ import pathlib
 
 import sys
 
-import pdoc.doc
-import pdoc.extract
+from pdoc.doc import (
+    extract_module,
+    ExtractError
+)
 import pdoc.render
 import pdoc.static
-import pdoc.version
 import pdoc.web
 
 parser = argparse.ArgumentParser(
@@ -125,8 +126,8 @@ def run():
     roots = []
     for mod in args.modules:
         try:
-            m = pdoc.extract.extract_module(mod)
-        except pdoc.extract.ExtractError as e:
+            m = extract_module(mod)
+        except ExtractError as e:
             _eprint(str(e))
             sys.exit(1)
         roots.append(m)

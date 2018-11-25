@@ -38,17 +38,6 @@ setup(
     package_data={"pdoc/render": ["templates/*"]},
     entry_points={"console_scripts": ["pdoc = pdoc.cli:main"]},
     provides=["pdoc"],
-    extras_require={
-        "dev": [
-            "flake8>=3.5, <3.6",
-            "mypy>=0.620, <0.621",
-            "pytest>=3.3,<4",
-            "pytest-cov>=2.5.1,<3",
-            "pytest-faulthandler>=1.3.1,<2",
-            "pytest-timeout>=1.2.1,<2",
-            "pytest-xdist>=1.22,<2",
-        ]
-    },
     install_requires=[
         "mako>=1.0.7,<1.1",
         "markdown2>=2.3.5,<2.4",

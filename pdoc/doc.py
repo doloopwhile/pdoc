@@ -1,7 +1,9 @@
 import ast
 import inspect
 import typing
-
+import importlib
+import os
+import pkgutil
 
 __pdoc__ = {}
 
@@ -95,7 +97,7 @@ def submodules(dname: str, mname: str) -> typing.Sequence[str]:
 
 def _extract_module(dname: str, mname: str, parent=None) -> typing.Any:
     m, pkg = load_module(dname, mname)
-    mod = pdoc.doc.Module(mname, m, parent)
+    mod = Module(mname, m, parent)
     if pkg:
         for i in submodules(dname, mname):
             mod.submodules.append(_extract_module(dname, i, parent=mod))

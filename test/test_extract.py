@@ -1,6 +1,6 @@
 import pytest
 
-import pdoc.extract
+import pdoc.doc
 
 import tutils
 
@@ -18,10 +18,10 @@ import tutils
 )
 def test_split_module_spec(input, expected):
     if expected is None:
-        with pytest.raises(pdoc.extract.ExtractError):
-            pdoc.extract.split_module_spec(input)
+        with pytest.raises(pdoc.doc.ExtractError):
+            pdoc.doc.split_module_spec(input)
     else:
-        assert pdoc.extract.split_module_spec(input) == expected
+        assert pdoc.doc.split_module_spec(input) == expected
 
 
 @pytest.mark.parametrize(
@@ -44,10 +44,10 @@ def test_split_module_spec(input, expected):
 def test_load_module(path, mod, expected, match):
     with tutils.tdir():
         if match:
-            with pytest.raises(pdoc.extract.ExtractError, match=match):
-                pdoc.extract.load_module(path, mod)
+            with pytest.raises(pdoc.doc.ExtractError, match=match):
+                pdoc.doc.load_module(path, mod)
         else:
-            _, ispkg = pdoc.extract.load_module(path, mod)
+            _, ispkg = pdoc.doc.load_module(path, mod)
             assert ispkg == expected
 
 
@@ -74,10 +74,10 @@ def test_load_module(path, mod, expected, match):
 def test_extract_module(path, expected, match):
     with tutils.tdir():
         if match:
-            with pytest.raises(pdoc.extract.ExtractError, match=match):
-                pdoc.extract.extract_module(path)
+            with pytest.raises(pdoc.doc.ExtractError, match=match):
+                pdoc.doc.extract_module(path)
         else:
-            ret = pdoc.extract.extract_module(path)
+            ret = pdoc.doc.extract_module(path)
             assert sorted([i.name for i in ret.allmodules()]) == expected
 
 
@@ -92,5 +92,5 @@ def test_extract_module(path, expected, match):
 )
 def test_submodules(path, modname, expected):
     with tutils.tdir():
-        ret = pdoc.extract.submodules(path, modname)
+        ret = pdoc.doc.submodules(path, modname)
         assert ret == expected

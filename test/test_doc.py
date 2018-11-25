@@ -1,12 +1,11 @@
 import tutils
 
 import pdoc.doc
-import pdoc.extract
 
 
 def test_simple():
     with tutils.tdir():
-        m = pdoc.extract.extract_module("./modules/one.py")
+        m = pdoc.doc.extract_module("./modules/one.py")
         assert m
 
 

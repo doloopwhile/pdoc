@@ -3,9 +3,7 @@ import re
 import os.path
 import logging
 
-import pdoc.doc
 import pdoc.render
-import pdoc.extract
 from pdoc.doc import extract_module
 
 
